@@ -1,0 +1,74 @@
+     **//////
+        //üçgen dalga oluşturmak için....
+        x++;  
+        __delay32(40);//1uS
+        if(x<=5000){
+            // FULLBRIDGE_Q3Q4_ACTIVE  L+  N-
+            OPTO_DRV1 = 1;
+            OPTO_DRV2 = 0;
+            IOCON3bits.OVRENH = 1;
+            IOCON3bits.OVRENL = 0; 
+            
+            PDC1=150+(x);
+            PDC2=150+(x);
+             
+             
+        }else if((x>5000) && (x<=10000)){
+                      
+            PDC1=150+(10000-x);
+            PDC2=150+(10000-x);
+           
+             
+        }else if((x>10000)&&(x<=15000)) {
+             //FULLBRIDGE_Q2Q5_ACTIVE   L-   N+  
+            OPTO_DRV1 = 0; //Mosfet on
+            OPTO_DRV2 = 1; //Mosfet off
+            IOCON3bits.OVRENH = 0;
+            IOCON2bits.OVRENL = 1;
+            
+            PDC1=150+(x-10000);
+            PDC2=150+(x-10000);
+          
+             
+        }else if((x>15000)&&(x<=20000)) {
+            PDC1=150+(20000-x);
+            PDC2=150+(20000-x);
+           
+             
+        }else if(x>20000)x=0;
+    ///*****
+
+            if(ninetyDegreeDetectFlag == 0){
+
+            // if sineAngle is less than 90 degrees, then add deltaAngle to point to next sample
+                if (sineAngle < NINETYDEGREE)
+                {
+                    currentReferenceDynamic = sineTable512[((sineAngle) >> 5)];
+                    sineAngle = sineAngle + deltaAngle;
+                    fullBridgeState=FULLBRIDGE_Q3Q4_ACTIVE;
+                }
+                else
+                {
+                    sineAngle = NINETYDEGREE;
+                    ninetyDegreeDetectFlag = 1;
+                }
+
+            }
+             else
+                {
+                // if sineAngle is greater than 90 degrees, then subtract deltaAngle from it
+                    currentReferenceDynamic = sineTable512[((sineAngle) >> 5)];
+                    sineAngle = sineAngle - deltaAngle;
+                    
+                }
+            if (globalAngle > ONEHUNDREDSEVENTYFIVEDEGREE)//
+                {
+                    sineAngle = 0;
+                    ninetyDegreeDetectFlag = 0;
+                    fullBridgeState=FULLBRIDGE_Q2Q5_ACTIVE;
+                }
+                else if (globalAngle > (ONEHUNDREDSEVENTYFIVEDEGREE*2))//360 derece bitti
+                    fullBridgeState = FULLBRIDGE_INACTIVE_2ND_QUADRANT;                    
+                    
+                }
+
