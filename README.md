@@ -12,7 +12,7 @@ The Solar Micro Inverter Reference Design is a single-stage, grid-connected, sol
 
 
 ### **The Subject of The Project :** 
-- Mikro Inverter
+- Micro Inverter
 - PIC33F mikrocontroller
 - XC16 PIC C Compiler 
 - PCB ddesign 
