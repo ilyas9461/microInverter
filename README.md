@@ -7,11 +7,11 @@ Renewable resources such as wind power generation and Photovoltaic (PV) systems 
 The recent increase in demand for solar energy systems is due to advances in the production of crystalline panels, which reduce the overall costs of production and increase the efficiency of PV panels. Additional reasons for the demand for solar energy are PV technology, proven and reliable, PV modules with warranties exceeding 30 years, and government incentives.
 
 There are two basic requirements for solar inverter systems: collecting available energy from the PV panel and injecting a sinusoidal current into the grid in phase with the grid voltage. A Maximum Power Point Tracking (MPPT) algorithm is required to harvest energy from the PV panel. This algorithm determines the maximum amount of power available from the PV module at any given time. Interfacing to the grid requires solar inverter systems to comply with certain standards issued by utility companies.
- <img src="./pictures/IMG_20150515_104155.jpg" alt="image" width="80%">
+ <img src="./Pictures/IMG_20150515_104155.jpg" alt="image" width="80%">
 
 The Solar Micro Inverter Reference Design is a single-stage, grid-connected, solar PV micro inverter. This means that the DC power from the solar panel is directly converted into an AC signal. This conversion is done by an interleaved flyback converter. A Full Bridge (drop-down) converter switched at 2x line frequency controls the direction of power flow to the grid. This microinverter is designed to connect to any PV module with a power rating of approximately 250 watts with an input voltage range of 25 VDC to 45 VDC and a maximum open circuit voltage of ~55V.
 
-  <img src="./pictures/IMG_20160617_120138.jpg" alt="image" width="80%">
+  <img src="./Pictures/IMG_20160617_120138.jpg" alt="image" width="80%">
 
 ### **The Subject of The Project :** 
 - Micro Inverter
